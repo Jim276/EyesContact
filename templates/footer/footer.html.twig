@@ -1,0 +1,69 @@
+<footer class="footer">
+    <div class="container  mx-auto mt-4  ">
+        <div class="flex flex-wrap justify-between xs:gap-10 text-white">
+        {# blocs footer #}
+            <div class="flex flex-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li> <a href="{{ path('app_lunette_de_vue_all') }}" > Lunettes de vue <i class="fa-solid fa-angle-right"></i></a> </li>
+            
+                    <li>  <a href="{{ path('app_lunette_de_soleil_all') }}" > Lunettes de soleil <i class="fa-solid fa-angle-right"></i></a> </li>
+
+                    <li>  <a href="{{ path('app_lentille_all') }}" > Lentilles <i class="fa-solid fa-angle-right"></i> </a> </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+
+                <ul>
+                    <li>   <a href="{{ path('app_contact') }}"> Besoin d'aide ?</a> </li>
+                </ul>
+            
+            </div>
+
+            <div>
+                <h4>Conditions</h4>
+
+                <ul>
+                    <li>  <a> Nos conditions d'utilisateurs</a> </li>
+                </ul>
+
+            </div>
+
+            <div>
+                <h4>Langues</h4>
+
+                <ul>
+                    <li>  <a> Français </a>  </li>
+            
+                    <li>  <a> Anglais </a> </li>
+
+                    <li>  <a> Allemand </a> </li>
+                </ul>
+            
+            </div>
+        
+        </div>
+        {# social media #}
+        <div class="flex  justify-center gap-3">
+            <div> <a href="https://www.instagram.com/"> <img class="w-12" src="{{ asset('images/social-media/instagram.png')}}" alt="instagram - eyes contact"> </a> </div>
+            <div> <a href="https://www.twitter.com/" > <img class="w-12" src="{{ asset('images/social-media/twitter.png')}}" alt="twitter - eyes contact"> </a> </div>
+            <div> <a href="https://www.youtube.com/"> <img class="w-12" src="{{ asset('images/social-media/youtube.png')}}" alt="chaine youtube - eyes contact"> </a> </div>
+            <div>  <a href="https://www.facebook.com/"> <img class="w-12" src="{{ asset('images/social-media/facebook.png')}}" alt=" facebook - eyes contact"> </a> </div>
+        
+        </div>
+
+        {# Company eyes contact #}
+        <div class="flex items-center py-4 sm:px-0 md:px-64 lg:px-64 mt-5">
+            <!-- The left line -->
+            <div class="flex-grow h-px bg-white"></div> 
+
+            <!-- Your text here -->
+            <span class="flex-shrink text-2xl px-8 sm:px-6 xs:px-2  font-inria-serif">Compagny Eyes Contact</span>
+
+            <!-- The right line -->
+            <div class="flex-grow h-px bg-white"></div>
+        </div>
+    </div>
+</footer>
