@@ -9,6 +9,12 @@
 
 {% endblock header %}
 
+{% for message in app.flashes('success') %}
+    <div class="bg-green-200 border-spacing-1 text-green-900 mb-8">
+        {{ message }}
+    </div>
+{% endfor %}
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
