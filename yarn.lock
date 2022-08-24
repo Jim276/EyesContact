@@ -1014,7 +1014,7 @@
 
 "@symfony/webpack-encore@^3.0.0":
   version "3.0.0"
-  resolved "https://registry.npmjs.org/@symfony/webpack-encore/-/webpack-encore-3.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-3.0.0.tgz#e3ee8d8258e6412b0adbce471e3ae35acc3b9236"
   integrity sha512-59BTz9glnvcGSFeTaYWtNzgfA26wLwh0TSbVQk8I9hmCnFYOFp+LgnUN+T4MyXA4WWg6+DAFIf+CuOD3o1XwoA==
   dependencies:
     "@babel/core" "^7.17.0"
