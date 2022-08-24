@@ -43,12 +43,9 @@
        <a class="link-content" href={{path('app_contact')}}><span class="title-nav">Contact</span> </a>
     </div>
 
-    {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-    <div class="link-log">
-        <a class="link-register" href={{path('app_register')}}>Inscription</a> /
-        <a class="link-login" href={{path('app_login')}}>Connexion</a>
-    </div>
-    {% endif %}
+    {# {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+   
+    {% endif %} #}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
  
@@ -59,6 +56,13 @@
 
         <a class="link-login" href={{path('app_logout')}}>Déconnexion</a>
 
+    {% else %}
+
+     <div class="link-log">
+        <a class="link-register" href={{path('app_register')}}>Inscription</a> /
+        <a class="link-login" href={{path('app_login')}}>Connexion</a>
+    </div>
+    
     {% endif %}
 
 
