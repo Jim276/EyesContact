@@ -10,6 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class RegistrationFormType extends AbstractType
 {
@@ -21,6 +23,9 @@ class RegistrationFormType extends AbstractType
             )
             ->add('firstname', TextType::class, ['required' => true,])
             ->add('email', EmailType::class, ['required' => true])
+            ->add('avatar', FileType::class, ['label' => 'avatar (JPG png)', 'required' => false])
+            
+
             ->add('phoneNumber', TextType::class, ['required' => false])
             ->add('plainPassword', PasswordType::class, [
             // instead of being set onto the object directly,

@@ -2,7 +2,12 @@
 
 {% block body %}
 
+<pre>
 
+    {# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Email: {{ app.user.email }}</p>
+    {% endif %} #}
+</pre>
 <div class="navbar-menu">
     <a class="link-content" href={{path('app_home')}}><img class="logo" src="{{ asset('images/EYES_CONTACT.jpg')}}" alt="logo_eyes_contact"></a>
 
@@ -38,10 +43,26 @@
        <a class="link-content" href={{path('app_contact')}}><span class="title-nav">Contact</span> </a>
     </div>
 
+    {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
     <div class="link-log">
         <a class="link-register" href={{path('app_register')}}>Inscription</a> /
         <a class="link-login" href={{path('app_login')}}>Connexion</a>
     </div>
+    {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+ 
+        
+        {# upload avatar #}
+        <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil">
+        {# Button logout #}
+
+        <a class="link-login" href={{path('app_logout')}}>Déconnexion</a>
+
+    {% endif %}
+
+
+    
 
     <div class="nav-icons">
         <div class="img-basket">

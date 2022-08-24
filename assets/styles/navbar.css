@@ -171,3 +171,7 @@ a{
         cursor: pointer;
     }
 }
+
+.avatar{
+    width:110px;
+}
