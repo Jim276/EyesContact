@@ -172,40 +172,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?self
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?self $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    public function addAddress(self $address): self
-    {
-        if (!$this->address->contains($address)) {
-            $this->address->add($address);
-            $address->setAddress($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAddress(self $address): self
-    {
-        if ($this->address->removeElement($address)) {
-            // set the owning side to null (unless already changed)
-            if ($address->getAddress() === $this) {
-                $address->setAddress(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Order>
      */
