@@ -19,7 +19,7 @@ class Category
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $parent = null;
+    private ?string $parent = null;
 
     #[ORM\Column(length: 510)]
     private ?string $slug = null;
@@ -49,12 +49,12 @@ class Category
         return $this;
     }
 
-    public function getParent(): ?float
+    public function getParent(): ?string
     {
         return $this->parent;
     }
 
-    public function setParent(?float $parent): self
+    public function setParent(?string $parent): self
     {
         $this->parent = $parent;
 
