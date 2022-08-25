@@ -175,3 +175,8 @@ a{
 .avatar{
     width:110px;
 }
+
+.noAvatar{
+    width: 60px; 
+    border-radius: 100%; 
+}

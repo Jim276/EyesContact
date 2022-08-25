@@ -8,6 +8,13 @@
     {% include "/navbar/index.html.twig" %}
 {% endblock header %}
 
+{% for message in app.flashes('success') %}
+    <div class="bg-green-200 border-spacing-1 text-green-900 mb-8">
+        {{ message }}
+    </div>
+{% endfor %}
+
+
 <div class="main-dash">
     <h1 class="title-tab">Mon compte Client</h1>
 
@@ -151,7 +158,7 @@
                 <a class="text-deco-profil" href=""><p class="text-img">Changer l'image </p></a>
             </div>
             {# coordonnées du client #}
-            <div class="tab02">
+            {# <div class="tab02">
                 <div class="form-content">
 
                     <div class="">
@@ -195,7 +202,7 @@
             
                     {{ form_end(form) }}
                 </div>
-            </div>
+            </div> #}
             <h2>Informations sur mes produits</h2>
             <div class="tab-03">
                 

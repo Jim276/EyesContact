@@ -43,22 +43,38 @@
        <a class="link-content" href={{path('app_contact')}}><span class="title-nav">Contact</span> </a>
     </div>
 
-    {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-    <div class="link-log">
-        <a class="link-register" href={{path('app_register')}}>Inscription</a> /
-        <a class="link-login" href={{path('app_login')}}>Connexion</a>
-    </div>
-    {% endif %}
+    {# {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+   
+    {% endif %} #}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
  
-        
-        {# upload avatar #}
-        <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil">
+        {% if app.user.avatar == null %}
+            <div>
+                <img class="noAvatar" src="https://www.photoprof.fr/images_dp/photographes/profil_vide.jpg" style="width:60px; border-radius: 100%; "/>
+                {{ app.user.firstname  }} {{ app.user.lastname }}
+            </div>
+        {% else %}
+
+         {# upload avatar #}
+            <div>
+                <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil">
+                {{ app.user.firstname  }} {{ app.user.lastname }}
+            </div>
+
+        {% endif %}
+       
         {# Button logout #}
 
         <a class="link-login" href={{path('app_logout')}}>Déconnexion</a>
 
+    {% else %}
+
+     <div class="link-log">
+        <a class="link-register" href={{path('app_register')}}>Inscription</a> /
+        <a class="link-login" href={{path('app_login')}}>Connexion</a>
+    </div>
+    
     {% endif %}
 
 
