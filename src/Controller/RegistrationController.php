@@ -56,11 +56,11 @@ class RegistrationController extends AbstractController
             );
 
             $user->setIsBlocked(false); 
-            $user->setRoles(['client']);
+            $user->setRoles(['ROLE_CLIENT']);
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            $this->addFlash('success', 'Votre message a été envoyé');
+            $this->addFlash('success', 'Inscription réussie');
             return $this->redirectToRoute('app_login');
         }
 
