@@ -50,8 +50,8 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Supplier $supplier = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'products')]
-    private Collection $image;
+    #[ORM\Column(length: 255)]
+    private ?string $image_product = null;
 
     public function __construct()
     {
@@ -230,26 +230,14 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, Image>
-     */
-    public function getImage(): Collection
+    public function getImageProduct(): ?string
     {
-        return $this->image;
+        return $this->image_product;
     }
 
-    public function addImage(Image $image): self
+    public function setImageProduct(string $image_product): self
     {
-        if (!$this->image->contains($image)) {
-            $this->image->add($image);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        $this->image->removeElement($image);
+        $this->image_product = $image_product;
 
         return $this;
     }
