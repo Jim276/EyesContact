@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller\Admin;
-
+use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\Variation;
@@ -47,5 +47,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Order', 'fas fa-list', Order::class);
         yield MenuItem::linkToCrud('Product', 'fas fa-list', Product::class);
         yield MenuItem::linkToCrud('Variation', 'fas fa-list', Variation::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
     }
 }
