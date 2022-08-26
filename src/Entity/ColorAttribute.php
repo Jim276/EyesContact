@@ -28,7 +28,7 @@ class ColorAttribute
 
     public function __toString()
     {
-        return $this->value;
+        return $this->getValue();
     }
 
     public function getId(): ?int

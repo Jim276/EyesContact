@@ -32,13 +32,6 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?Cart $cart = null;
 
-
-    public function __toString()
-    {
-        return $this->firstname;
-    }
-
-
     public function getId(): ?int
     {
         return $this->id;
