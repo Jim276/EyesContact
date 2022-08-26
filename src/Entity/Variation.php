@@ -13,43 +13,16 @@ class Variation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $value = null;
-
     #[ORM\ManyToOne(inversedBy: 'variation')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 
+    #[ORM\ManyToOne(inversedBy: 'variations')]
+    private ?ColorAttribute $color = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getValue(): ?string
-    {
-        return $this->value;
-    }
-
-    public function setValue(string $value): self
-    {
-        $this->value = $value;
-
-        return $this;
     }
 
     public function getProduct(): ?Product
@@ -60,6 +33,18 @@ class Variation
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getColor(): ?ColorAttribute
+    {
+        return $this->color;
+    }
+
+    public function setColor(?ColorAttribute $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

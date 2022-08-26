@@ -18,7 +18,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id = null; 
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -59,11 +59,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->orders = new ArrayCollection();
     }
 
-
     public function __toString()
     {
         return $this->firstName;
     }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,7 +121,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 

@@ -44,20 +44,25 @@ class Product
     private Collection $variation;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
-
-    #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Supplier $supplier = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image_product = null;
+
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
+    private Collection $categories;
 
     public function __construct()
     {
         $this->carts = new ArrayCollection();
         $this->variation = new ArrayCollection();
         $this->image = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -206,18 +211,6 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     public function getSupplier(): ?Supplier
     {
         return $this->supplier;
@@ -238,6 +231,30 @@ class Product
     public function setImageProduct(string $image_product): self
     {
         $this->image_product = $image_product;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }
