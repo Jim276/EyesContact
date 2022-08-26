@@ -34,7 +34,7 @@ class ProductCrudController extends AbstractCrudController
             ->setBasePath('products/')
                 ->setUploadDir('public/uploads/products')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(true),
+                ->setRequired(false),
             NumberField::new('weight'),
             SlugField::new('slug')->setTargetFieldName('name'),
             DateTimeField::new('creationDate'),
