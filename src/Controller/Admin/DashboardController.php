@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use App\Controller\HomeController;
 
 
 class DashboardController extends AbstractDashboardController
@@ -27,7 +28,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        $url = $this->adminUrlGenerator->setController(CategoryCrudController::class)->generateUrl();
+        $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
        return $this->redirect($url);
 
     }
@@ -37,6 +38,12 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('EyesContact');
     }
+
+    // public function configureHomeController(): HomeController
+    // {
+    //     return HomeController::new()
+    //         ->setsubTitle('Home');
+    // }
 
     public function configureMenuItems(): iterable
     {
