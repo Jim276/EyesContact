@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Variation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class VariationCrudController extends AbstractCrudController
 {
@@ -19,9 +17,8 @@ class VariationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('product'),
-            TextEditorField::new('type'),
-            TextEditorField::new('value'),
+            AssociationField::new('product', 'Produit concerné'),
+            AssociationField::new('color', 'Couleur'),
         ];
     }
     

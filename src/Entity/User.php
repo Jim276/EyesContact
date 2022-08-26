@@ -18,7 +18,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id = null; 
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -59,11 +59,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->orders = new ArrayCollection();
     }
 
-
     public function __toString()
     {
         return $this->firstName;
     }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,7 +121,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -178,40 +177,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsBlocked(bool $isBlocked): self
     {
         $this->isBlocked = $isBlocked;
-
-        return $this;
-    }
-
-    public function getAddress(): ?self
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?self $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    public function addAddress(self $address): self
-    {
-        if (!$this->address->contains($address)) {
-            $this->address->add($address);
-            $address->setAddress($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAddress(self $address): self
-    {
-        if ($this->address->removeElement($address)) {
-            // set the owning side to null (unless already changed)
-            if ($address->getAddress() === $this) {
-                $address->setAddress(null);
-            }
-        }
 
         return $this;
     }

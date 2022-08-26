@@ -19,10 +19,7 @@ class Address
     private ?string $country = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $zipCode = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $streetNumber = null;
+    private ?string $zipCode = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $street = null;
@@ -30,9 +27,19 @@ class Address
     #[ORM\OneToMany(mappedBy: 'adress', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -52,26 +59,14 @@ class Address
         return $this;
     }
 
-    public function getZipCode(): ?int
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
-    public function setZipCode(?int $zipCode): self
+    public function setZipCode(?string $zipCode): self
     {
         $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    public function getStreetNumber(): ?int
-    {
-        return $this->streetNumber;
-    }
-
-    public function setStreetNumber(?int $streetNumber): self
-    {
-        $this->streetNumber = $streetNumber;
 
         return $this;
     }
@@ -114,6 +109,30 @@ class Address
                 $user->setAdress(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
