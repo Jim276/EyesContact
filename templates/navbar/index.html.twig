@@ -2,46 +2,75 @@
 
 {% block body %}
 
+<pre>
 
+    {# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Email: {{ app.user.email }}</p>
+    {% endif %} #}
+</pre>
 <div class="navbar-menu">
     <a class="link-content" href={{path('app_home')}}><img class="logo" src="{{ asset('images/EYES_CONTACT.jpg')}}" alt="logo_eyes_contact"></a>
 
-    <div class="dropdown">
-        <span class="title-nav">Lunettes de vue</span>
-        <div class="dropdown-content">
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div>
-        <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}
+    <div class="">
+        <a class="title-nav" href={{path('app_product', {id:'1'})}}>Lunettes de vue</a>
+       
     </div>
-    <div class="dropdown">
-        <span class="title-nav">Lunettes de soleil</span>
-        <div class="dropdown-content">
-            <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div>
-        <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}
+
+    <div class="">
+        <a class="title-nav" href={{path('app_product', {id:'2'})}}>Lunettes de soleil</a>
+        
     </div>
-    <div class="dropdown">
-        <span class="title-nav">Lentille</span>
-        <div class="dropdown-content">
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div>
-        <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}
+
+    <div class="">
+        <a class="title-nav" href={{path('app_product', {id:'3'})}}>Lentille</a>
+        
     </div>
 
     <div class="">
        <a class="link-content" href={{path('app_contact')}}><span class="title-nav">Contact</span> </a>
     </div>
 
-    <div class="link-log">
-        <a class="link-register" href="#">Inscription</a> /
-        <a class="link-login" href="#">Connexion</a>
+    {# {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+   
+    {% endif %} #}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+ 
+        {% if app.user.avatar == null %}
+            <div>
+                <img class="noAvatar" src="https://www.photoprof.fr/images_dp/photographes/profil_vide.jpg" style="width:60px; border-radius: 100%; "/>
+                {{ app.user.firstname  }} {{ app.user.lastname }}
+            </div>
+        {% else %}
+
+         {# upload avatar #}
+
+            <div class="dropdown">
+                <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil">
+                <p>Connecté en tant que </p>{{ app.user.firstname  }} {{ app.user.lastname }}
+                <div class="dropdown-content">
+                    <a class="link-user" href={{path('admin')}}>Mon compte Admin</a><br/><br/>
+                    <a class="link-user" href={{path('app_dashboard_client')}}>Client</a>
+                </div>
+            </div>
+
+        {% endif %}
+       
+        {# Button logout #}
+
+        <a class="link-login" href={{path('app_logout')}}>Déconnexion</a>
+
+    {% else %}
+
+     <div class="link-log">
+        <a class="link-register" href={{path('app_register')}}>Inscription</a> /
+        <a class="link-login" href={{path('app_login')}}>Connexion</a>
     </div>
+    
+    {% endif %}
+
+
+    
 
     <div class="nav-icons">
         <div class="img-basket">
@@ -62,29 +91,29 @@
      <div class="dropdown-mobile-link">
         <div class="mobile-title-nav">Lunettes de vue<i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
        
-        <div class="dropdown-mobile-link-content">
+        {# <div class="dropdown-mobile-link-content">
             <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"femmes"})}}><p>Femmes</p></a>
             <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"hommes"})}}><p>Hommes</p></a>
             <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div>
+        </div> #}
         
     </div>
     <div class="dropdown-mobile-link">
         <div class="mobile-title-nav">Lunettes de soleil <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
-            <div class="dropdown-mobile-link-content">
+            {# <div class="dropdown-mobile-link-content">
                 <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"femmes"})}}><p>Femmes</p></a>
                 <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"hommes"})}}><p>Hommes</p></a>
                 <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-            </div>
+            </div> #}
        
     </div>
     <div class="dropdown-mobile-link">
         <div class="mobile-title-nav">Lentille <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
-        <div class="dropdown-mobile-link-content">
+        {# <div class="dropdown-mobile-link-content">
             <a class="link-content" href={{path('app_lentille_slug', {slug:"femmes"})}}><p>Femmes</p></a>
             <a class="link-content" href={{path('app_lentille_slug', {slug:"hommes"})}}><p>Hommes</p></a>
             <a class="link-content" href={{path('app_lentille_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div>
+        </div> #}
        
     </div>
 
@@ -98,4 +127,3 @@
     </div>
 </div>
 {% endblock %}
-

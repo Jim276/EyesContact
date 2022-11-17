@@ -5,11 +5,11 @@
             <div class="flex flex-col">
                 <h4>Shop</h4>
                 <ul>
-                    <li> <a href="{{ path('app_lunette_de_vue_all') }}" > Lunettes de vue <i class="fa-solid fa-angle-right"></i></a> </li>
+                    <li> <a class="title-nav" href={{path('app_product', {id:'1'})}}>Lunettes de vue</a> </li>
             
-                    <li>  <a href="{{ path('app_lunette_de_soleil_all') }}" > Lunettes de soleil <i class="fa-solid fa-angle-right"></i></a> </li>
+                    <li>  <a href={{path('app_product', {id:'2'})}} > Lunettes de soleil </a> </li>
 
-                    <li>  <a href="{{ path('app_lentille_all') }}" > Lentilles <i class="fa-solid fa-angle-right"></i> </a> </li>
+                    <li>  <a href={{path('app_product', {id:'3'})}} > Lentilles  </a> </li>
                 </ul>
             </div>
 
@@ -27,6 +27,7 @@
 
                 <ul>
                     <li>  <a> Nos conditions d'utilisateurs</a> </li>
+                    <li>   <a href="{{ path('app_mention_legal') }}"> Mentions Légales</a> </li>
                 </ul>
 
             </div>

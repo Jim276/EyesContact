@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{title}} | Eyes Contact{% endblock %}
+{% block title %} Eyes Contact{% endblock %}
 
 {% block body %}
 {# <pre>
@@ -9,10 +9,9 @@
 
 {% include 'navbar/index.html.twig'%}
 
-<div class="hero w-full h-72 flex " style="background :  url(' {{asset(url_hero) }}') ; background-repeat: no-repeat; background-position: center center;
-    background-size:cover; ">
+<div class="hero w-full h-72 flex " style="background :  url(' {{asset(url_hero) }}') ; background-repeat: no-repeat; background-position: center center; background-size: cover">
     <div class="container mx-auto my-auto">
-        <h1>{{ title }}</h1>
+        <h1>Category</h1>
     </div>
 
 </div>
@@ -71,12 +70,12 @@
     </div>
 
     <div class="main-tab">
-        {% for product in data %}
+        {% for product in products %}
             <div class="card">
-                <a href="{{path('app_product_show', {id: 1})}}">
-                    <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01">
+                <a>
+                    {# <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01"> #}
                     <h2 class="title-card">{{ product.name }}</h2>
-                    <p class="price">{{ product.prix }}€</p>
+                    <p class="price">{{ product.price }}€</p>
                 </a>
                 <button class="btn-card" type="submit">Ajouter</button>
             </div>
