@@ -3,9 +3,6 @@
 {% block title %} Eyes Contact{% endblock %}
 
 {% block body %}
-{# <pre>
-    {{ dump(data) }}
-</pre> #}
 
 {% include 'navbar/index.html.twig'%}
 
@@ -72,8 +69,8 @@
     <div class="main-tab">
         {% for product in products %}
             <div class="card">
-                <a>
-                    {# <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01"> #}
+                <a  href={{path('app_product_single', {id:product.id})}}>
+                     <img class="card-tab" src={{ asset('uploads/products/' ~ product.getImageProduct) }} alt={{ product.name }}>
                     <h2 class="title-card">{{ product.name }}</h2>
                     <p class="price">{{ product.price }}€</p>
                 </a>

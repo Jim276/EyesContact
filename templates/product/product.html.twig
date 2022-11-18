@@ -14,15 +14,15 @@
     <h1 class="font-inter text-4xl mt-20 mb-7"> {{product.name}}</h1>
 
     <div class="flex md:flex-row xs:flex-col gap-12">
-        <div class="w-full xs:mt-16 ">
-            <img class="w-full" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01">
+        <div class="w-5 xs:mt-16 ">
+            <img class="w-full" src={{ asset('uploads/products/' ~ product.getImageProduct) }} alt={{product.name}}>
         </div>
 
         <div class="mb-9">
             <div class="flex gap-14">
                 <div class="font-inter">
                     <p class="font-semibold mb-2">Prix</p>
-                    <p> {{ product.prix }} € </p>
+                    <p> {{ product.price }} € </p>
                 </div>
 
                 <div>
@@ -73,10 +73,10 @@
                 {% for product in articles_similaire %}
                     <div class="swiper-slide">
                         <div class="card">
-                                <a href="{{path('app_product_show', {id: 1})}}">
-                                    <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette01.jpg')}}" alt="lunette01">
-                                    <h2 class="title-card"> test </h2>
-                                    <p class="price">45.00€</p>
+                                <a href="{{path('app_product_single', {id: product.id})}}">
+                                    <img class="card-tab" src="{{ asset('uploads/products/' ~ product.getImageProduct) }}" alt="lunette01">
+                                    <h2 class="title-card"> {{product.name}} </h2>
+                                    <p class="price">{{product.price}}€</p>
                                 </a>
                                 <button class="btn-card" type="submit">Ajouter</button>
                             </div>

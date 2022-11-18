@@ -58,147 +58,19 @@
 
 
             <div class="card">
-                <img class="card-tab" src={{ asset('uploads/products/' ~ product.getImageProduct) }} alt="lunette01">
-                <h2 class="title-card">{{product.name}}</h2>
-                <p class="price">{{product.price}}€</p>
-                <button class="btn-card" type="submit">Ajouter</button>
+                <a href={{path('app_product_single', {id:product.id})}}>
+                    <img class="card-tab" src={{ asset('uploads/products/' ~ product.getImageProduct) }} alt="lunette01">
+                    <h2 class="title-card">{{product.name}}</h2>
+                    <p class="price">{{product.price}}€</p>
+                    <button class="btn-card" type="submit">Ajouter</button>
+                </a>
             </div>
 
         {% endfor %}
 
-        {# <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette03.jpg')}}" alt="lunette03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette02.jpg')}}" alt="lunette02">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette03.jpg')}}" alt="lunette03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lentilles/lentille01.jpg')}}" alt="lentille01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lentilles/lentille02.jpg')}}" alt="lentilles02">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lentilles/lentille03.jpg')}}" alt="lentille03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette03.jpg')}}" alt="lunette03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette02.jpg')}}" alt="lunette02">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette03.jpg')}}" alt="lunette03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lentilles/lentille01.jpg')}}" alt="lentille01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">20,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette02.jpg')}}" alt="lunette02">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunettes_de_vue/lunette03.jpg')}}" alt="lunette03">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">75,00€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div>
-
-        <div class="card">
-            <img class="card-tab" src="{{ asset('images/product-images/Lunette_de_soleil/lunette01.jpg')}}" alt="lunette01">
-            <h2 class="title-card">Lunette de vue <br/> Femme</h2>
-            <p class="price">84,99€</p>
-            <button class="btn-card" type="submit">Ajouter</button>
-        </div> #}
-
+     
 
     </div>
-
-
-
-
-
-
-
-
-
 
 </div>
 
