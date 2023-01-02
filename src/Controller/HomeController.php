@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Product;
 use Doctrine\Persistence\ManagerRegistry;
 
-#[Route('/home')]
+
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
@@ -29,6 +29,10 @@ class HomeController extends AbstractController
         return $this->render('chartedonnees/charte_donnees.html.twig', []);
     }
 
-    
+    #[Route('/cgv', name: 'cgv')]
+    public function condition_general_vente()
+    {
 
+        return $this->render('CGV/cgv.html.twig', []);
+    }
 }

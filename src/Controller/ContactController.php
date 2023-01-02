@@ -3,20 +3,20 @@
 namespace App\Controller;
 
 use App\Form\ContactType; 
-use App\Services\MailerService; 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request/*, MailerService $mailer*/): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
-        /*
+        
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         
@@ -30,17 +30,28 @@ class ContactController extends AbstractController
             'Numéro de téléphone : ' . $contactFormData['mobile'] . '<br> <br>' 
              .'Vous a envoyé le message suivant : ' . '<br> <br>' . $contactFormData['message'];
             
-            $mailer->sendEmail(
-                subject: $subject, 
-                content: $content
-            );
+            // $mailer->sendEmail(
+            //     to: 'mailtrap@example.com',
+            //     from: $contactFormData['email'],
+            //     subject: $subject,
+            //     content: $content
+            // );
 
+            $email = (new Email())
+            ->from('mailtrap@example.com')
+            ->to($contactFormData['email'])
+            ->subject($subject)
+            ->html($content);
+
+            $mailer->send($email);
+
+           
             $this->addFlash('success', 'Votre message a été envoyé');
             return $this->redirectToRoute('app_contact');
         }
-        */
+        
         return $this->render('contact/index.html.twig', [
-            /*'form' => $form->createView()*/
+            'form' => $form->createView()
         ]);
     }
 }

@@ -19,9 +19,6 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?float $price = null;
-
     #[ORM\Column(length: 15000)]
     private ?string $description = null;
 
@@ -49,15 +46,20 @@ class Product
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image_product = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
-    private Collection $categories;
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Category $category = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $price = null;
+
+
+
 
     public function __construct()
     {
         $this->carts = new ArrayCollection();
         $this->variation = new ArrayCollection();
         $this->image = new ArrayCollection();
-        $this->categories = new ArrayCollection();
     }
 
     public function __toString()
@@ -78,18 +80,6 @@ class Product
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -235,26 +225,26 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
+    public function getPrice(): ?string
     {
-        $this->categories->removeElement($category);
+        return $this->price;
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
