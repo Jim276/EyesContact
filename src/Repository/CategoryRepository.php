@@ -39,16 +39,16 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function findOneByIdJoinedToProduct(int $categoryId)
+    public function findOneByIdJoinedToProduct(int $id)
     {
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
-            'SELECT p
-            FROM App\Entity\Category c
-            INNER JOIN App\Entity\Product p
-            WHERE c.id = :id'
-        )->setParameter('id', $categoryId);
+            'SELECT p 
+            FROM App\Entity\Product p 
+            INNER JOIN  product_category on product_category.product_id = product.id
+            WHERE product_category.category_id = :id'
+        )->setParameter('id', $id);
 
         return $query->getResult();
     }

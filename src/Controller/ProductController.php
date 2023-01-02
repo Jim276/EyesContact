@@ -35,33 +35,25 @@ class ProductController extends AbstractController
             $url_hero = "/images/product/hero-lentille.png";
         }
 
-        // $products = $doctrine->getRepository(Product::class)->findAll(
-        //     // ['categories' => '1']
-        // );
 
         
-        //$products = $doctrine->getRepository(Category::class)->find($id); 
-        
-        //dd($product->getCategories());
-
-        $products = $doctrine->getRepository(Category::class)->findOneByIdJoinedToProduct($id);
-        
+        $products = $doctrine->getRepository(Product::class)->findBy(["category" => $id]); 
+        $category = $doctrine->getRepository(Category::class)->find($id);
+        // dd($products);
 
         return $this->render('product/lunette-de-vue.html.twig', [
+            'category' =>$category,
             'products' => $products,
             'url_hero' => $url_hero
         ]);
     }
-
-
-
 
     #[Route('/product/{id}', name: 'app_product_single')]
     public function product_show(ManagerRegistry $doctrine, int $id): Response
     {
         $product = $doctrine->getRepository(Product::class)->find($id);
 
-        $articles_similaire= $doctrine->getRepository(Category::class)->findOneByIdJoinedToProduct($id);
+        $articles_similaire= $doctrine->getRepository(Product::class)->findBy(["category" => $id]);
 
         return $this->render('product/product.html.twig', [
             'product' => $product, 
