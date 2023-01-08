@@ -21,7 +21,7 @@ class ContactType extends AbstractType
             )
             ->add('prenom', TextType::class, ['required' => true,])
             ->add('email', EmailType::class, ['required' => true])
-            ->add('mobile', TextType::class, ['required' => false])
+            ->add('telephone', TextType::class, ['required' => false])
             ->add('message', TextareaType::class, [
                 'required' => true,
                 'attr' => ['rows' => 6],
