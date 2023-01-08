@@ -9,18 +9,22 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+
 use Doctrine\Persistence\ManagerRegistry;
+
 
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
+
     public function index(Request $request, MailerInterface $mailer, ManagerRegistry $doctrine): Response
     {
         $contact = new Contact;
         $entityManager = $doctrine->getManager();
         $form = $this->createForm(ContactType::class, $contact);
+
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
@@ -28,7 +32,7 @@ class ContactController extends AbstractController
             $contactFormData = $form->getData();
 
             $subject = 'Demande de contact sur le site Eyes contact  de ' . $form["email"]->getData();
-            
+
             $content = '<br> <br> Message de ' . '<b>' .  $form['prenom']->getData() . ' '  . $form['nom']->getData() . '</b>'. '<br> <br>'. 
             'Numéro de téléphone : ' . $form['telephone']->getData() . '<br> <br>'
             . 'Adresse e-mail : ' . $form['email']->getData() . '<br> <br>' 
@@ -44,7 +48,7 @@ class ContactController extends AbstractController
 
             $entityManager->persist($contactFormData);
             $entityManager->flush();
-
+ 
             $this->addFlash('success', 'Votre message a été envoyé');
             return $this->redirectToRoute('app_contact');
         }
