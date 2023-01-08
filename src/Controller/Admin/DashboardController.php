@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use App\Controller\HomeController;
-
+use App\Entity\Contact;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -39,7 +39,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('EyesContact');
+            ->setTitle('EyesContact Admin');
     }
 
     // public function configureHomeController(): HomeController
@@ -52,13 +52,28 @@ class DashboardController extends AbstractDashboardController
     {
         // Menu du dashboard
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Fournisseurs ', 'fas fa-list', Supplier::class);
-        yield MenuItem::linkToCrud('Commandes', 'fas fa-list', Order::class);
-        yield MenuItem::linkToCrud('Produits', 'fas fa-list', Product::class);
+
+        yield MenuItem::linkToRoute('Aller à la boutique ', 'fa-solid fa-store', 'app_home');
+        yield MenuItem::section(); 
+
+        yield MenuItem::linkToCrud('Catégorie', 'fa-solid fa-tags', Category::class);
+
+        yield MenuItem::section('Gestions de commandes');
+        yield MenuItem::linkToCrud('Commandes', 'fa-solid fa-receipt', Order::class);
+
+        yield MenuItem::section('Gestions de fournisseurs');
+        yield MenuItem::linkToCrud('Fournisseurs ', 'fa-solid fa-truck', Supplier::class);
+
+        yield MenuItem::section('Gestions de produits');
+        yield MenuItem::linkToCrud('Produits', 'fa-solid fa-shirt', Product::class);
         yield MenuItem::linkToCrud('Variations de produit', 'fas fa-list', Variation::class);
-        yield MenuItem::linkToCrud('Attributs Couleurs', 'fas fa-list', ColorAttribute::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Adresses utilisateur', 'fas fa-list', Address::class);
+        yield MenuItem::linkToCrud('Attributs Couleurs', 'fa-solid fa-palette', ColorAttribute::class);
+
+        yield MenuItem::section('Gestions d\'utilisateurs');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', User::class);
+        yield MenuItem::linkToCrud('Adresses des utilisateurs', 'fa-solid fa-location-dot', Address::class);
+
+        yield MenuItem::section('Messagerie');
+        yield MenuItem::linkToCrud('Contact', 'fa-regular fa-envelope', Contact::class);
     }
 }

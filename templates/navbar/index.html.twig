@@ -31,20 +31,28 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
  
         {% if app.user.avatar == null %}
-            <div>
+            <div class="dropdown">
                 <img class="noAvatar" src="https://www.photoprof.fr/images_dp/photographes/profil_vide.jpg" style="width:60px; border-radius: 100%; "/>
-                {{ app.user.firstname  }} {{ app.user.lastname }}
+                <p>{{ app.user.firstname  }} {{ app.user.lastname }}</p>
+                <div class="dropdown-content">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="link-user" href={{path('admin')}}>Mon compte Admin</a><br/><br/>
+                    {% endif %}
+                    <a class="link-user" href={{path('app_dashboard_client')}}>Mon compte client</a>
+                </div>
             </div>
         {% else %}
 
          {# upload avatar #}
 
             <div class="dropdown">
-                <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil">
-                <p>Connecté en tant que </p>{{ app.user.firstname  }} {{ app.user.lastname }}
+                <img class="avatar" src={{ asset('uploads/avatars/' ~ app.user.avatar) }} alt="profil" style="width:60px; border-radius: 100%; ">
+                <p> {{ app.user.firstname  }} {{ app.user.lastname }} </p>
                 <div class="dropdown-content">
-                    <a class="link-user" href={{path('admin')}}>Mon compte Admin</a><br/><br/>
-                    <a class="link-user" href={{path('app_dashboard_client')}}>Client</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="link-user" href={{path('admin')}}>Mon compte Admin</a><br/><br/>
+                    {% endif %}
+                    <a class="link-user" href={{path('app_dashboard_client')}}>Mon compte client</a>
                 </div>
             </div>
 
@@ -83,32 +91,14 @@
 
 <div class="dropdown-mobile">
      <div class="dropdown-mobile-link">
-        <div class="mobile-title-nav">Lunettes de vue<i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
-       
-        {# <div class="dropdown-mobile-link-content">
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-            <a class="link-content" href={{path('app_lunette_de_vue_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div> #}
+        <a class="mobile-title-nav" href={{path('app_product', {id:'1'})}} >Lunettes de vue</a>
         
     </div>
     <div class="dropdown-mobile-link">
-        <div class="mobile-title-nav">Lunettes de soleil <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
-            {# <div class="dropdown-mobile-link-content">
-                <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-                <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-                <a class="link-content" href={{path('app_lunette_de_soleil_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-            </div> #}
-       
+        <a class="mobile-title-nav" href={{path('app_product', {id:'2'})}}>Lunettes de soleil</a>
     </div>
     <div class="dropdown-mobile-link">
-        <div class="mobile-title-nav">Lentille <i class="fa fa-angle-down" aria-hidden="true"></i>{# icon flèche du bas  #}</div>
-        {# <div class="dropdown-mobile-link-content">
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"femmes"})}}><p>Femmes</p></a>
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"hommes"})}}><p>Hommes</p></a>
-            <a class="link-content" href={{path('app_lentille_slug', {slug:"enfants"})}}><p>Enfants</p></a>
-        </div> #}
-       
+        <a class="mobile-title-nav" href={{path('app_product', {id:'3'})}}>Lentille</a>
     </div>
 
     <div class="mobile-title-nav">
@@ -116,8 +106,8 @@
     </div>
     
     <div class="mobile-link-log">
-        <a class="link-register" href="#">Inscription</a> /
-        <a class="link-login" href="#">Connexion</a>
+        <a class="link-register"  href={{path('app_register')}}>Inscription</a> /
+        <a class="link-login" href={{path('app_login')}}>Connexion</a>
     </div>
 </div>
 {% endblock %}
