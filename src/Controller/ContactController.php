@@ -27,24 +27,24 @@ class ContactController extends AbstractController
             
             $contactFormData = $form->getData();
 
-            /*$subject = 'Demande de contact sur le site Eyes contact  de ' . $contactFormData['email'];
+            $subject = 'Demande de contact sur le site Eyes contact  de ' . $form["email"]->getData();
             
-            $content = '<br> <br> Message de ' . '<b>' . $contactFormData['prenom'] . ' '  . $contactFormData['nom'] . '</b>'. '<br> <br>'. 
-            'Numéro de téléphone : ' . $contactFormData['telephone'] . '<br> <br>' 
-             .'Vous a envoyé le message suivant : ' . '<br> <br>' . $contactFormData['message'];
+            $content = '<br> <br> Message de ' . '<b>' .  $form['prenom']->getData() . ' '  . $form['nom']->getData() . '</b>'. '<br> <br>'. 
+            'Numéro de téléphone : ' . $form['telephone']->getData() . '<br> <br>'
+            . 'Adresse e-mail : ' . $form['email']->getData() . '<br> <br>' 
+             .'Vous a envoyé le message suivant : ' . '<br> <br>' . $form['message']->getData();
 
             $email = (new Email())
-            ->from('mailtrap@example.com')
-            ->to($contactFormData['email'])
+            ->from('eyescontact@example.com')
+            ->to($form["email"]->getData())
             ->subject($subject)
             ->html($content);
 
-            $mailer->send($email); */
+            $mailer->send($email);
 
             $entityManager->persist($contactFormData);
             $entityManager->flush();
 
-           
             $this->addFlash('success', 'Votre message a été envoyé');
             return $this->redirectToRoute('app_contact');
         }
