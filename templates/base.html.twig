@@ -30,10 +30,12 @@
 
     </head>
     <body>
+        {# Navbar #}
+        {{ render(controller(
+        'App\\Controller\\NavbarController::index'
+        )) }}
 
-
-
-
+        {# Content #}
         {% block body %}{% endblock %}
 
         

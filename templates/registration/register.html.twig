@@ -3,13 +3,6 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-{% block header %}
-
-    {% include "/navbar/index.html.twig" %}
-
-{% endblock header %}
-
-
     <div class=" container mt-20">
         {% for message in app.flashes('success') %}
             <div class="bg-green-200 border-spacing-1 text-green-900 mb-8">

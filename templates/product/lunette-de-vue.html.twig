@@ -4,14 +4,23 @@
 
 {% block body %}
 
-{% include 'navbar/index.html.twig'%}
-
-<div class="hero w-full h-72 flex " style="background :  url(' {{asset(url_hero) }}') ; background-repeat: no-repeat; background-position: center center; background-size: cover">
+{% if category.getImage %}
+<div class="hero w-full h-72 flex " style="background :  url(' {{asset('uploads/categories/' ~ category.getImage) }}'); 
+background-repeat: no-repeat; background-position: center center; background-size: cover">
     <div class="container mx-auto my-auto">
         <h1>{{ category.name }}</h1>
     </div>
-
 </div>
+{% else %}
+
+<div class="hero w-full h-72 flex " style="background :  url(' {{asset('/images/product/hero-femme.png') }}'); 
+background-repeat: no-repeat; background-position: center center; background-size: cover">
+    <div class="container mx-auto my-auto">
+        <h1>{{ category.name }}</h1>
+    </div>
+</div>
+
+{% endif %}
 
 <div class="container md:mx-auto xs:mx-2 mt-14">
 

@@ -1,24 +1,11 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-
 <div class="navbar-menu">
     <a class="link-content" href={{path('app_home')}}><img class="logo" src="{{ asset('images/EYES_CONTACT.jpg')}}" alt="logo_eyes_contact"></a>
 
+    {% for categorie in categories%}
     <div class="">
-        <a class="title-nav" href={{path('app_product', {id:'1'})}}>Lunettes de vue</a>
-       
+        <a class="title-nav" href={{path('app_product', {id: categorie.id})}}>{{ categorie.name }}</a>
     </div>
-
-    <div class="">
-        <a class="title-nav" href={{path('app_product', {id:'2'})}}>Lunettes de soleil</a>
-        
-    </div>
-
-    <div class="">
-        <a class="title-nav" href={{path('app_product', {id:'3'})}}>Lentille</a>
-        
-    </div>
+    {% endfor %}
 
     <div class="">
        <a class="link-content" href={{path('app_contact')}}><span class="title-nav">Contact</span> </a>
@@ -92,7 +79,6 @@
 <div class="dropdown-mobile">
      <div class="dropdown-mobile-link">
         <a class="mobile-title-nav" href={{path('app_product', {id:'1'})}} >Lunettes de vue</a>
-        
     </div>
     <div class="dropdown-mobile-link">
         <a class="mobile-title-nav" href={{path('app_product', {id:'2'})}}>Lunettes de soleil</a>
@@ -110,4 +96,3 @@
         <a class="link-login" href={{path('app_login')}}>Connexion</a>
     </div>
 </div>
-{% endblock %}
