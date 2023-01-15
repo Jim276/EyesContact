@@ -2,17 +2,23 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class NavbarController extends AbstractController
 {
-    #[Route('/navbar', name: 'app_navbar')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine,): Response
     {
-        return $this->render('navbar/index.html.twig', [
-            'controller_name' => 'NavbarController',
+        $categories = $doctrine
+        ->getRepository(Category::class)
+        ->findAll();
+
+        return $this->render('navbar/_index.html.twig', [
+            'categories' =>  $categories,
         ]);
     }
 }
