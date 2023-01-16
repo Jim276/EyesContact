@@ -28,7 +28,8 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name', 'Nom'),
             AssociationField::new('category', 'Catégories'),
             AssociationField::new('supplier', 'Fournisseur'),
-            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
+            
+            MoneyField::new('price', 'Prix')->setCurrency('EUR')->setStoredAsCents(false),
             TextareaField::new('description', 'Description'),
             ImageField::new('image_product', 'Image du produit')
             ->setBasePath('products/')

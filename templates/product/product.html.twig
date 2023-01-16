@@ -21,7 +21,7 @@
             <div class="flex gap-14">
                 <div class="font-inter">
                     <p class="font-semibold mb-2">Prix</p>
-                    <p> {{ product.price }} € </p>
+                    <p> {{ product.price |format_currency('EUR', locale='fr')}}</p>
                 </div>
 
                 <div>

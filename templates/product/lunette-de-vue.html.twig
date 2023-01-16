@@ -81,7 +81,8 @@ background-repeat: no-repeat; background-position: center center; background-siz
                 <a  href={{path('app_product_single', {id:product.id})}}>
                      <img class="card-tab" src={{ asset('uploads/products/' ~ product.getImageProduct) }} alt={{ product.name }}>
                     <h2 class="title-card">{{ product.name }}</h2>
-                    <p class="price">{{ product.price }}€</p>
+                    {{dump(product.price)}}
+                    <p class="price">{{ product.price |format_currency('EUR', locale='fr') }}</p>
                 </a>
                 <button class="btn-card" type="submit">Ajouter</button>
             </div>
