@@ -34,19 +34,19 @@ class Product
     #[ORM\Column(length: 510)]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: Cart::class, mappedBy: 'products')]
+    #[ORM\ManyToMany(targetEntity: Cart::class, mappedBy: 'products', cascade: ["remove"])]
     private Collection $carts;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Variation::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Variation::class, cascade: ["remove"])]
     private Collection $variation;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\ManyToOne(inversedBy: 'products', cascade: ["remove"])]
     private ?Supplier $supplier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image_product = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\ManyToOne(inversedBy: 'products', cascade: ["remove"])]
     private ?Category $category = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
