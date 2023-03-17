@@ -27,5 +27,5 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 /public/uploads/avatars/*
-# /public/uploads/categories/*
+/public/uploads/categories/*
 /public/uploads/products/*
