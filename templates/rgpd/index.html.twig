@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Eyes Contact | RGPD
+{% endblock %}
+
+{% block body %}
+	<style>
+		.title-mention {
+			font-size: 20px;
+			font-weight: 600;
+			color: rgb(54, 53, 53);
+			font-family: "arial, sans-serif";
+			margin: 15px;
+		}
+		.desc-mention {
+			margin: 10px auto;
+		}
+		.text-legal {
+			font-size: 16px;
+			margin: 10px;
+			font-family: "arial, sans-serif";
+		}
+	</style>
+
+	{% include 'navbar/index.html.twig' %}
+	<div class="container mx-auto mt-4">
+
+		<h1 class="font-inria-serif text-4xl text-center md:text-left">Mentions Légales</h1>
+
+		<div class="desc-rgpd">
+			<p class="test-rgpd">
+				Eyes Contact sommes soumis aux obligations du Règlement général sur la protection des données (RGPD). Nous prenons très au sérieux la protection des données personnelles de nos clients et nous nous engageons à respecter les exigences du RGPD.
+								
+								Lorsque vous utilisez notre site e-commerce, nous collectons et traitons certaines données personnelles, telles que votre nom, votre adresse email, votre adresse de livraison et vos informations de paiement. Nous collectons ces données pour traiter vos commandes, vous informer sur nos produits et services, et améliorer votre expérience sur notre site.
+								
+								Nous ne partagerons jamais vos données personnelles avec des tiers sans votre consentement explicite, sauf lorsque cela est nécessaire pour traiter vos commandes ou pour respecter nos obligations légales. Nous prenons des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre toute perte, toute altération, tout accès non autorisé et toute divulgation.
+								
+								Vous avez le droit de demander l'accès à vos données personnelles, de demander la rectification ou la suppression de ces données, ou de limiter le traitement de ces données. Vous pouvez également retirer votre consentement à tout moment si nous avons recueilli vos données personnelles sur la base de votre consentement.
+								
+								Nous nous engageons à notifier les autorités compétentes et les clients en cas de violation de données à caractère personnel.
+								
+								Si vous avez des questions sur notre politique de protection des données ou si vous souhaitez exercer vos droits en matière de protection des données, veuillez nous contacter à l'adresse email indiquée sur notre site e-commerce.
+			</p>
+		</div>
+
+
+	</div>
+
+	{% include 'footer/footer.html.twig' %}
+{% endblock %}

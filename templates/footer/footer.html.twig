@@ -1,71 +1,99 @@
 <footer class="footer">
-    <div class="container  mx-auto mt-4  ">
-        <div class="flex flex-wrap justify-between xs:gap-10 text-white">
-        {# blocs footer #}
-            <div class="flex flex-col">
-                <h4>Shop</h4>
-                <ul>
-                    <li> <a class="title-nav" href={{path('app_product', {id:'1'})}}>Lunettes de vue</a> </li>
-            
-                    <li>  <a href={{path('app_product', {id:'2'})}} > Lunettes de soleil </a> </li>
+	<div class="container  mx-auto mt-4  ">
+		<div
+			class="flex flex-wrap justify-between xs:gap-10 text-white">
+			{# blocs footer #}
+			<div class="flex flex-col">
+				<h4>Shop</h4>
+				<ul>
+					<li><a class="title-nav"href={{path('app_product', {id:'1'} )}}>Lunettes de vue</a></li>
 
-                    <li>  <a href={{path('app_product', {id:'3'})}} > Lentilles  </a> </li>
-                </ul>
-            </div>
+					<li><ahref={{path('app_product',{id:'2'})}}>Lunettes de soleil</a></li>
 
-            <div>
-                <h4>Contact</h4>
+					<li><ahref={{path('app_product',{id:'3'})}}>Lentilles</a></li>
+				</ul>
+			</div>
 
-                <ul>
-                    <li>   <a href="{{ path('app_contact') }}"> Besoin d'aide ?</a> </li>
-                </ul>
-            
-            </div>
+			<div>
+				<h4>Contact</h4>
 
-            <div>
-                <h4>Conditions</h4>
+				<ul>
+					<li><ahref="{{path('app_contact')}}">Besoin d'aide ?</a></li>
+				</ul>
 
-                <ul>
-                    <li>  <a> Nos conditions d'utilisateurs</a> </li>
-                    <li>   <a href="{{ path('app_mention_legal') }}"> Mentions Légales</a> </li>
-                    <li>   <a href="{{ path('charte-donnee-perso') }}">La politique de confidentialité</a> </li>
-                </ul>
+			</div>
 
-            </div>
+			<div>
+				<h4>Conditions</h4>
 
-            <div>
-                <h4>Langues</h4>
+				<ul>
+					<li>
+						<a>Nos conditions d'utilisateurs</a>
+					</li>
+					<li>
+						<a href="{{path('app_rgpd')}}">RGPD</a>
+					</li>
+					<li>
+						<a href="{{path('app_mention_legal')}}">Mentions Légales</a>
+					</li>
+					<li>
+						<a href="{{path('charte-donnee-perso')}}">La politique de confidentialité</a>
+					</li>
+					{# <li><ahref="{{ path('app_rgpd') }}">RGPD</a></li> #}
+				</ul>
 
-                <ul>
-                    <li>  <a> Français </a>  </li>
-            
-                    <li>  <a> Anglais </a> </li>
+			</div>
 
-                    <li>  <a> Allemand </a> </li>
-                </ul>
-            
-            </div>
-        
-        </div>
-        {# social media #}
-        <div class="flex  justify-center gap-3">
-            <div> <a href="https://www.instagram.com/"> <img class="w-12" src="{{ asset('images/social-media/instagram.png')}}" alt="instagram - eyes contact"> </a> </div>
-            <div> <a href="https://www.twitter.com/" > <img class="w-12" src="{{ asset('images/social-media/twitter.png')}}" alt="twitter - eyes contact"> </a> </div>
-            <div> <a href="https://www.youtube.com/"> <img class="w-12" src="{{ asset('images/social-media/youtube.png')}}" alt="chaine youtube - eyes contact"> </a> </div>
-            <div>  <a href="https://www.facebook.com/"> <img class="w-12" src="{{ asset('images/social-media/facebook.png')}}" alt=" facebook - eyes contact"> </a> </div>
-        
-        </div>
+			<div>
+				<h4>Langues</h4>
 
-        {# Company eyes contact #}
-        <div class="flex items-center py-4 sm:px-0 md:px-64 lg:px-64 mt-5">
-            <!-- The left line -->
-            <div class="flex-grow h-px bg-white"></div> 
+				<ul>
+					<li><a>Français</a></li>
 
-            <!-- Your text here -->
-            <span class="flex-shrink text-2xl px-8 sm:px-6 xs:px-2  font-inria-serif">Compagny Eyes Contact</span>
+					<li><a>Anglais</a></li>
 
-            <!-- The right line -->
-            <div class="flex-grow h-px bg-white"></div>
-        </div>
-    </div>
+					<li><a>Allemand</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		{# social media #}
+		<div class="flex  justify-center gap-3">
+			<div>
+				<a href="https://www.instagram.com/">
+					<img class="w-12" src="{{ asset('images/social-media/instagram.png')}}" alt="instagram - eyes contact">
+				</a>
+			</div>
+			<div>
+				<a href="https://www.twitter.com/">
+					<img class="w-12" src="{{ asset('images/social-media/twitter.png')}}" alt="twitter - eyes contact">
+				</a>
+			</div>
+			<div>
+				<a href="https://www.youtube.com/">
+					<img class="w-12" src="{{ asset('images/social-media/youtube.png')}}" alt="chaine youtube - eyes contact">
+				</a>
+			</div>
+			<div>
+				<a href="https://www.facebook.com/">
+					<img class="w-12" src="{{ asset('images/social-media/facebook.png')}}" alt=" facebook - eyes contact">
+				</a>
+			</div>
+
+		</div>
+
+		{# Company eyes contact #}
+		<div
+			class="flex items-center py-4 sm:px-0 md:px-64 lg:px-64 mt-5">
+			<!-- The left line -->
+			<div class="flex-grow h-px bg-white"></div>
+
+			<!-- Your text here -->
+			<span class="flex-shrink text-2xl px-8 sm:px-6 xs:px-2  font-inria-serif">Compagny Eyes Contact</span>
+
+			<!-- The right line -->
+			<div class="flex-grow h-px bg-white"></div>
+		</div>
+	</div>
 </footer>
