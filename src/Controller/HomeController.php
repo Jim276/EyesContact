@@ -19,7 +19,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'products' => $products,
         ]);
-
     }
 
     #[Route('/charte-donnees-personnelles', name: 'charte-donnee-perso')]
@@ -28,7 +27,4 @@ class HomeController extends AbstractController
 
         return $this->render('chartedonnees/charte_donnees.html.twig', []);
     }
-
-    
-
 }
